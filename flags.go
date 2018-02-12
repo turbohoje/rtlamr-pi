@@ -128,6 +128,8 @@ func HandleFlags() {
 		encoder = json.NewEncoder(os.Stdout)
 	case "xml":
 		encoder = xml.NewEncoder(os.Stdout)
+	case "jsonToGcp":
+		encoder = json.NewEncoder(os.Stdout)
 	}
 }
 
