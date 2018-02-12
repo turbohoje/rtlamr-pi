@@ -162,7 +162,7 @@ func (rcvr *Receiver) Run() {
 	// Sets the kind for the new entity.
 	kind := "utility-record"
 	// Sets the name/ID for the new entity.
-	name := "sampletask1"
+	//name := "sampletask1"
 	// Creates a Key instance.
 
 	// Creates a Task instance.
@@ -208,7 +208,7 @@ func (rcvr *Receiver) Run() {
 					JSON: fmt.Sprintf("%s", msg),
 				}
 				fmt.Print(msg)
-				taskKey := datastore.NameKey(kind, name, nil)
+				taskKey := datastore.NameKey(kind, msg.Time.String(), nil)
 				if _, err := client.Put(ctx, taskKey, &r); err != nil {
 					log.Fatalf("Failed to save task: %v", err)
 				}
