@@ -39,8 +39,8 @@ import (
 	_ "./scm"
 	_ "./scmplus"
 
-	"cloud.google.com/go/datastore"
-	"golang.org/x/net/context"
+	//"cloud.google.com/go/datastore"
+	//"golang.org/x/net/context"
 )
 
 var rcvr Receiver
@@ -151,16 +151,16 @@ func (rcvr *Receiver) Run() {
 		}
 	}()
 
-	ctx := context.Background()
-	// Set your Google Cloud Platform project ID.
-	projectID := "xcel-monitor"
-	// Creates a client.
-	client, err := datastore.NewClient(ctx, projectID)
-	if err != nil {
-		log.Fatalf("Failed to create client: %v", err)
-	}
+	//ctx := context.Background()
+	//// Set your Google Cloud Platform project ID.
+	//projectID := "xcel-monitor"
+	//// Creates a client.
+	//client, err := datastore.NewClient(ctx, projectID)
+	//if err != nil {
+	//	log.Fatalf("Failed to create client: %v", err)
+	//}
 	// Sets the kind for the new entity.
-	kind := "utility-record"
+	//kind := "utility-record"
 	// Sets the name/ID for the new entity.
 	//name := "sampletask1"
 	// Creates a Key instance.
@@ -204,14 +204,14 @@ func (rcvr *Receiver) Run() {
 
 				err := encoder.Encode(msg)
 				//here
-				r := Record{
-					JSON: fmt.Sprintf("%s", msg),
-				}
-				fmt.Print(msg)
-				taskKey := datastore.NameKey(kind, msg.Time.String(), nil)
-				if _, err := client.Put(ctx, taskKey, &r); err != nil {
-					log.Fatalf("Failed to save task: %v", err)
-				}
+				//r := Record{
+				//	JSON: fmt.Sprintf("%s", msg),
+				//}
+				//fmt.Print(msg)
+				//taskKey := datastore.NameKey(kind, msg.Time.String(), nil)
+				//if _, err := client.Put(ctx, taskKey, &r); err != nil {
+				//	log.Fatalf("Failed to save task: %v", err)
+				//}
 				//endhere
 
 				if err != nil {
